@@ -1,0 +1,30 @@
+body {
+    margin-top: 70px;
+    background-color: rgb(17, 58, 56);
+    color: #fff;
+    font-size: 16px;
+}
+
+button.btn {
+    color: black;
+}
+
+.popover-header{
+    background-color: rgb(42, 107, 105);
+}
+
+.popover{
+    height: 200px;
+    width: 400px;
+    overflow: scroll;
+}
+
+.change {
+    color: black;
+        visibility: hidden
+
+}
+
+.hide {
+    visibility: visible;
+}
