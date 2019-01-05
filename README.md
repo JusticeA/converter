@@ -1,5 +1,5 @@
 # Testing my skills in vanilla JavaScript, CSS3, and BootStrap HTML5 with a converter
-This is a converter created from pure _HTML_ _CSS_, **_vanilla JavaScript_** and _BootStrap_. 
+This is a converter developed, using pure _HTML_ _CSS_, **_vanilla JavaScript_** and _BootStrap_. 
 
 Thanks to Traversy Media, I was able to understand some fundamentals and I created a weight converter. However, after much playing around, I was able to scale it up to include a temperature, time and area converter. 
 
