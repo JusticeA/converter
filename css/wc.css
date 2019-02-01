@@ -1,8 +1,9 @@
 body {
     margin-top: 70px;
-    background-color: rgb(17, 58, 56);
+    background-color: rgb(117, 116, 168);
     color: #fff;
     font-size: 16px;
+    font-family: chalkboard;
 }
 
 button.btn {
@@ -10,7 +11,7 @@ button.btn {
 }
 
 .popover-header{
-    background-color: rgb(42, 107, 105);
+    background-color: rgb(56, 155, 151);
 }
 
 .popover{
@@ -20,9 +21,8 @@ button.btn {
 }
 
 .change {
-    color: black;
-        visibility: hidden
-
+    color: rgb(0, 0, 0);
+    visibility: hidden;
 }
 
 .hide {
