@@ -42,3 +42,11 @@ button.btn {
     border-radius: 5px;
     border: none;
 }
+
+#calculate {
+    border: 1px solid #DFA801;
+}
+
+#calculate:hover {
+    background-color: #DFA801;
+}

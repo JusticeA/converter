@@ -137,7 +137,7 @@ function scaleSelect() {
   document.getElementById("lbsInput").value = "";
   if (scale.value == "mass") {
     cl.style.display = "block";
-    formula.innerHTML = `<button type="button" class="btn btn-md btn-warning" data-toggle="popover" data-placement="left" title="Mass Conversion Formulae:" data-trigger="focus" data-content="1lb = 453.592grams, 0.453592kg, 16oz | 1gram = 0.00220462lbs, 0.001kg, 0.035274oz | 1kg = 2.205lbs, 1000gram, 35.274oz | 1oz = 0.0625lbs, 28.3495grams, 0.02835kg">Formula</button>
+    formula.innerHTML = `<button type="button" class="btn btn-md btn-warning" data-toggle="popover" data-placement="left" title="Mass Conversion Formula:" data-trigger="focus" data-content="1lb = 453.592grams, 0.453592kg, 16oz | 1gram = 0.00220462lbs, 0.001kg, 0.035274oz | 1kg = 2.205lbs, 1000gram, 35.274oz | 1oz = 0.0625lbs, 28.3495grams, 0.02835kg">Formula</button>
                    <p id="formulaOutput"> </p>`;
     ch[0].textContent = "Pound(s):";
     ch[1].textContent = "Gram(s):";
@@ -152,13 +152,13 @@ function scaleSelect() {
     option2[2].value = "grams";
     option2[3].value = "kilograms";
     option2[4].value = "ounce";
-    toCalculate.addEventListener("click", calculate);
+    toCalculate.addEventListener("click", calculate)
   } else if (scale.value == "temperature") {
     if (cl) {
       cl.style.display = "none";
     }
-    formula.innerHTML = `<button type="button" class="btn btn-md btn-warning" data-toggle="popover" data-placement="left" data-trigger="focus" title="Temperature Conversion Formulae:" 
-        data-content="0°C + 273.15 = 273.15K, (0°C × 9/5) + 32 = 32°F">
+    formula.innerHTML = `<button type="button" class="btn btn-md btn-warning" data-toggle="popover" data-placement="left" data-trigger="focus" title="Temperature Conversion Formula:" 
+        data-content="0°C + 273.15 = 273.15K | (0°C × 9/5) + 32 = 32°F">
         Formula</button>
                     <p id="formulaOutput"> </p>`;
     ch[0].textContent = "Celsius";
@@ -208,15 +208,20 @@ function scaleSelect() {
     option2[3].value = "squarefoot";
     toCalculate.addEventListener("click", calculate);
   }
-  // Listen for event
-  $(document).ready(function() {
+// Listen for event
+
+$(document).ready(function() {
     $("[data-toggle=popover]").popover();
   });
 }
 choice.addEventListener("change", () => {
   document.getElementById("lbsInput").value = "";
 });
+
 scale.addEventListener("change", scaleSelect);
 document.getElementById("calc").addEventListener("click", function display() {
   calc.classList.toggle("hide");
 });
+
+
+
