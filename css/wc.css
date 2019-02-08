@@ -28,3 +28,17 @@ button.btn {
 .hide {
     visibility: visible;
 }
+
+.disp {
+    background-color: #DFA801;
+    border-radius: 9px;
+    margin: 10px
+}
+
+.prev {
+    background-color: rgba(78, 56, 9, 0.438);
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+}

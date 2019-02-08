@@ -13,119 +13,130 @@ let option2 = choice.querySelectorAll("option");
 let calc = document.getElementById("pCalculations");
 let toCalculate = document.querySelector("#calculate");
 outputView.style.display = "none";
-let array = [];
+let cl = document.querySelector(".cl");
+let ch = document.querySelectorAll(".ch");
+let arr = ["placeholder"];
 
 // Functions/Actions
 // Calculation when area is choosen in the scale
-function mass() {
+function calculate() {
   //Get input
-  outputView.style.display = "block";
   let inputs = parseFloat(document.getElementById("lbsInput").value);
-  let lb = document.getElementById("output1");
-  let gram = document.getElementById("output2");
-  let kg = document.getElementById("output3");
-  let oz = document.getElementById("output4");
-  if (choice.value == "pounds") {
-    lb.innerHTML = inputs;
-    gram.innerHTML = inputs / 0.0022046;
-    kg.innerHTML = inputs / 2.2046;
-    oz.innerHTML = inputs * 16;
-  } else if (choice.value == "grams") {
-    lb.innerHTML = inputs / 453.592;
-    gram.innerHTML = inputs;
-    kg.innerHTML = inputs / 1000;
-    oz.innerHTML = inputs / 28.35;
-  } else if (choice.value == "kilograms") {
-    lb.innerHTML = inputs * 2.20462;
-    gram.innerHTML = inputs * 1000;
-    kg.innerHTML = inputs;
-    oz.innerHTML = inputs * 35.274;
-  } else {
-    lb.innerHTML = inputs / 16;
-    gram.innerHTML = inputs * 28.35;
-    kg.innerHTML = inputs / 35.274;
-    oz.innerHTML = inputs;
-  }
-}
-// Calculation when area is choosen in the scale
-function temperature() {
-  //Get input
+  let out1 = document.getElementById("output1");
+  let out2 = document.getElementById("output2");
+  let out3 = document.getElementById("output3");
+  let out4 = document.getElementById("output4");
   outputView.style.display = "block";
-  let inputs = document.getElementById("lbsInput").value;
-  let celsius = document.getElementById("output1");
-  let kelvin = document.getElementById("output2");
-  let fahrenheit = document.getElementById("output3");
-  if (choice.value == "celsius") {
-    celsius.innerHTML = inputs;
-    kelvin.innerHTML = +inputs + 273.15;
-    fahrenheit.innerHTML = +inputs * (9 / 5) + 32;
-  } else if (choice.value == "kelvin") {
-    celsius.innerHTML = inputs - 273.15;
-    kelvin.innerHTML = inputs;
-    fahrenheit.innerHTML = ((inputs - 273.15) * 9) / 5 + 32;
+  if (scale.value == "mass") {
+    // Calculation when mass is choosen in the scale
+    if (choice.value == "pounds") {
+      out1.innerHTML = inputs;
+      out2.innerHTML = inputs / 0.0022046;
+      out3.innerHTML = inputs / 2.2046;
+      out4.innerHTML = inputs * 16;
+    } else if (choice.value == "grams") {
+      out1.innerHTML = inputs / 453.592;
+      out2.innerHTML = inputs;
+      out3.innerHTML = inputs / 1000;
+      out4.innerHTML = inputs / 28.35;
+    } else if (choice.value == "kilograms") {
+      out1.innerHTML = inputs * 2.20462;
+      out2.innerHTML = inputs * 1000;
+      out3.innerHTML = inputs;
+      out4.innerHTML = inputs * 35.274;
+    } else {
+      out1.innerHTML = inputs / 16;
+      out2.innerHTML = inputs * 28.35;
+      out3.innerHTML = inputs / 35.274;
+      out4.innerHTML = inputs;
+    }
+  } else if (scale.value == "temperature") {
+    // Calculation when temperature is choosen in the scale
+    //Get input
+    if (choice.value == "celsius") {
+      out1.innerHTML = inputs;
+      out2.innerHTML = +inputs + 273.15;
+      out3.innerHTML = +inputs * (9 / 5) + 32;
+    } else if (choice.value == "kelvin") {
+      out1.innerHTML = inputs - 273.15;
+      out2.innerHTML = inputs;
+      out3.innerHTML = ((inputs - 273.15) * 9) / 5 + 32;
+    } else {
+      out1.innerHTML = ((inputs - 32) * 5) / 9;
+      out2.innerHTML = ((inputs - 32) * 5) / 9 + 273.15;
+      out3.innerHTML = inputs;
+    }
+  } else if (scale.value == "time") {
+    // Calculation when time is choosen in the scale
+    if (choice.value == "hours") {
+      out1.innerHTML = inputs;
+      out2.innerHTML = inputs * 60;
+      out3.innerHTML = inputs * 3600;
+    } else if (choice.value == "minutes") {
+      out1.innerHTML = inputs / 60;
+      out2.innerHTML = inputs;
+      out3.innerHTML = inputs * 60;
+    } else {
+      out1.innerHTML = inputs / 3600;
+      out2.innerHTML = inputs / 60;
+      out3.innerHTML = inputs;
+    }
   } else {
-    celsius.innerHTML = ((inputs - 32) * 5) / 9;
-    kelvin.innerHTML = ((inputs - 32) * 5) / 9 + 273.15;
-    fahrenheit.innerHTML = inputs;
+    // Calculation when area is choosen in the scale
+    if (choice.value == "squaremetre") {
+      out1.innerHTML = inputs;
+      out2.innerHTML = inputs / (2.59 * 10 ** 6);
+      out3.innerHTML = inputs / 10.764;
+    } else if (choice.value == "squaremile") {
+      out1.innerHTML = inputs * (2.59 * 10 ** 6);
+      out2.innerHTML = inputs;
+      out3.innerHTML = inputs * (2.788 * 10 ** 7);
+    } else {
+      out1.innerHTML = inputs / 10.764;
+      out2.innerHTML = inputs / (2.788 * 10 ** 7);
+      out3.innerHTML = inputs;
+    }
   }
-  
-}
-// Calculation when area is choosen in the scale
-function time() {
-  outputView.style.display = "block";
-  // Get input
-  let inputs = parseInt(document.getElementById("lbsInput").value);
-  let hour = document.getElementById("output1");
-  let minute = document.getElementById("output2");
-  let second = document.getElementById("output3");
-  if (choice.value == "hours") {
-    hour.innerHTML = inputs;
-    minute.innerHTML = inputs * 60;
-    second.innerHTML = inputs * 3600;
-  } else if (choice.value == "minutes") {
-    hour.innerHTML = inputs / 60;
-    minute.innerHTML = inputs;
-    second.innerHTML = inputs * 60;
-  } else {
-    hour.innerHTML = inputs / 3600;
-    minute.innerHTML = inputs / 60;
-    second.innerHTML = inputs;
+  // Output Previous Calculations
+  if (true) {
+    if (scale.value == "mass") {
+      arr.push(
+        `Scale: ${scale.value.toUpperCase()}, Unit: ${choice.value.toUpperCase()} and outputted values: ${
+          ch[0].textContent
+        } = ${Number(out1.textContent).toFixed(2)}, ${
+          ch[1].textContent
+        } = ${Number(out2.textContent).toFixed(2)}, ${
+          ch[2].textContent
+        } = ${Number(out3.textContent).toFixed(2)}, ${
+          ch[3].textContent
+        } = ${Number(out4.textContent).toFixed(2)}`
+      );
+    } else {
+      arr.push(
+        `Scale: ${scale.value.toUpperCase()}, Unit: ${choice.value.toUpperCase()} and outputted values: ${
+          ch[0].textContent
+        } = ${Number(out1.textContent).toFixed(2)}, ${
+          ch[1].textContent
+        } = ${Number(out2.textContent).toFixed(2)}, ${
+          ch[2].textContent
+        } = ${Number(out3.textContent).toFixed(2)}`
+      );
+    }
   }
+  arr.shift();
+  arr.forEach(x => {
+    document.getElementById(
+      "pCalculations"
+    ).innerHTML += ` <div><div class="disp">${x}</div> </div>`;
+  });
 }
-// Calculation when area is choosen in the scale
-function area() {
-  outputView.style.display = "block";
-  let inputs = parseInt(document.getElementById("lbsInput").value);
-  let mt = document.getElementById("output1");
-  let m = document.getElementById("output2");
-  let f = document.getElementById("output3");
-  if (choice.value == "squaremetre") {
-    mt.innerHTML = inputs;
-    m.innerHTML = inputs / (2.59 * 10 ** 6);
-    f.innerHTML = inputs / 10.764;
-  } else if (choice.value == "squaremile") {
-    mt.innerHTML = inputs * (2.59 * 10 ** 6);
-    m.innerHTML = inputs;
-    f.innerHTML = inputs * (2.788 * 10 ** 7);
-  } else {
-    mt.innerHTML = inputs / 10.764;
-    m.innerHTML = inputs / (2.788 * 10 ** 7);
-    f.innerHTML = inputs;
-  }
-}
-
 function scaleSelect() {
   outputView.style.display = "none";
-  let cl = document.querySelector(".cl");
-  let ch = document.querySelectorAll(".ch");
   choice.value = option2[0].value;
   outputView.style.visibility = "visible";
   document.getElementById("lbsInput").value = "";
   if (scale.value == "mass") {
     cl.style.display = "block";
-    document
-      .getElementById("calculate")
-      .removeEventListener("click", temperature);
     formula.innerHTML = `<button type="button" class="btn btn-md btn-warning" data-toggle="popover" data-placement="left" title="Mass Conversion Formulae:" data-trigger="focus" data-content="1lb = 453.592grams, 0.453592kg, 16oz | 1gram = 0.00220462lbs, 0.001kg, 0.035274oz | 1kg = 2.205lbs, 1000gram, 35.274oz | 1oz = 0.0625lbs, 28.3495grams, 0.02835kg">Formula</button>
                    <p id="formulaOutput"> </p>`;
     ch[0].textContent = "Pound(s):";
@@ -141,12 +152,11 @@ function scaleSelect() {
     option2[2].value = "grams";
     option2[3].value = "kilograms";
     option2[4].value = "ounce";
-    toCalculate.addEventListener("click", mass);
+    toCalculate.addEventListener("click", calculate);
   } else if (scale.value == "temperature") {
     if (cl) {
       cl.style.display = "none";
     }
-    document.getElementById("calculate").removeEventListener("click", mass);
     formula.innerHTML = `<button type="button" class="btn btn-md btn-warning" data-toggle="popover" data-placement="left" data-trigger="focus" title="Temperature Conversion Formulae:" 
         data-content="0°C + 273.15 = 273.15K, (0°C × 9/5) + 32 = 32°F">
         Formula</button>
@@ -161,7 +171,7 @@ function scaleSelect() {
     option2[1].value = "celsius";
     option2[2].value = "kelvin";
     option2[3].value = "fahrenheit";
-    toCalculate.addEventListener("click", temperature);
+    toCalculate.addEventListener("click", calculate);
   } else if (scale.value == "time") {
     if (cl) {
       cl.style.display = "none";
@@ -179,7 +189,7 @@ function scaleSelect() {
     option2[1].value = "hours";
     option2[2].value = "minutes";
     option2[3].value = "seconds";
-    toCalculate.addEventListener("click", time);
+    toCalculate.addEventListener("click", calculate);
   } else {
     if (cl) {
       cl.style.display = "none";
@@ -196,7 +206,7 @@ function scaleSelect() {
     option2[1].value = "squaremetre";
     option2[2].value = "squaremile";
     option2[3].value = "squarefoot";
-    toCalculate.addEventListener("click", area);
+    toCalculate.addEventListener("click", calculate);
   }
   // Listen for event
   $(document).ready(function() {
